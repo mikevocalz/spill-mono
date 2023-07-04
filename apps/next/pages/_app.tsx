@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Solito Example App</title>
+        <title>Spill Monorepo</title>
         <meta
           name="description"
           content="Spill"
