@@ -1,0 +1,22 @@
+{
+  "name": "spill-monorepo",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@types/react": "^18.2.14",
+    "@types/react-native": "^0.72.2",
+    "eslint": "^8.44.0",
+    "prettier": "^2.8.8",
+    "prettier-plugin-tailwindcss": "^0.3.0",
+    "turbo": "^1.10.7",
+    "typescript": "^5.1.6"
+  },
+  "scripts": {
+    "native": "cd apps/expo && yarn start",
+    "web": "cd apps/next && yarn next"
+  },
+  "packageManager": "yarn@3.4.1"
+}
