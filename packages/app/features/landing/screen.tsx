@@ -255,7 +255,7 @@ export function LandingScreen() {
                 placeholder='Anything you want to Spill?'
               />
               <Pressable
-                className='w-[80%] h-14 text-white font-bold items-center rounded-xl justify-center mb-6 bg-black'>
+                className='w-[80%] h-14 text-white font-bold items-center rounded-xl justify-center mb-6 bg-black/[.09]'>
                 Submit
               </Pressable>
 
