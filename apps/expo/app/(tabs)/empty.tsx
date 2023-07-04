@@ -1,5 +1,5 @@
 import { View } from "app/design/view"
 
-export const Empty = () => {
-  <View />
+export default function Empty() {
+  return <View />
 }

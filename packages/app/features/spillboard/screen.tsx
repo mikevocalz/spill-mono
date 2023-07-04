@@ -11,9 +11,9 @@ export function SpillBoardScreen() {
     <ScreenScrollView
       contentContainerStyle={{
         alignItems: 'center',
-        justifyContent: 'center'
       }}
-      className="flex-1 bg-black w-screen  pb-[300px]">
+      className="flex-1 bg-black h-screen min-w-screen min-h-screen">
+
       <H1 className='text-white'>Spillboard</H1>
     </ScreenScrollView>
   )

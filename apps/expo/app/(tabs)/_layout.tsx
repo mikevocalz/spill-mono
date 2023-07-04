@@ -26,7 +26,7 @@ function MatTabBarIcon(props: {
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
-
+  let isExpaned
   return (
     <Tabs
       screenOptions={{
@@ -43,10 +43,32 @@ export default function TabLayout() {
         headerTitleAlign: 'center',
         headerStyle: {
           backgroundColor: "#0b7b11",
+          borderBottomLeftRadius: 15,
+          borderBottomRightRadius: 15,
         },
         headerTintColor: '#fff',
         tabBarStyle: {
+          shadowColor: 'transparent',
           backgroundColor: "#0f24cf",
+          position: 'absolute',
+          bottom: 8,
+          left: 0,
+          right: 0,
+          height: 60,
+          borderRadius: 15,
+          paddingBottom: 5,
+          borderTopWidth: 0,
+          elevation: 0,
+          shadow: {
+            shadowOpacity: 0.25,
+            shadowRadius: 3.5,
+            elevation: 0,
+            shadowColor: '#7F5DF0',
+            shadowOffset: {
+              width: 0,
+              height: 10
+            },
+          }
         },
         headerTitle: () => <LogoTitle height={50} width={100} fill={'#fff'} />,
         headerLeft: () => (
@@ -86,14 +108,25 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name='empty'
+        name="empty"
         options={{
-          tabBarButton: () =>
+          title: 'Empty',
+          tabBarButton: ({ isExpanded }) => (
             <Pressable
-              className='h-70 w-70'
+              style={{
+                marginTop: -10,
+                backgroundColor: '#ec562a',
+                borderRadius: 10,
+                width: 70,
+                height: 60,
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+              className='h-70 w-70 bg-red-700'
             >
-              <TabBarIcon size={65} name='add-circle' color={'#00a16e'} />
-            </Pressable>,
+              <MatTabBarIcon name={isExpanded ? 'arrow-expanded-vertical' : 'arrow-collapse-vertical'} color={'#000'} />
+            </Pressable>
+          )
         }}
       />
       <Tabs.Screen
