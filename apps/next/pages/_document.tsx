@@ -60,6 +60,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -ms-overflow-style: scrollbar;
+  font-family:'SFProDisplay-Bold'
 }
 ${customFontCss}
 `

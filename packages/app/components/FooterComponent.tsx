@@ -42,13 +42,13 @@ const FooterComponent = () => {
             <p className="uppercase text-[#efcf37]  font-bold md:mb-6">Social</p>
             <ul className="list-reset mb-6">
               <li className="mt-2 inline-block mr-2 md:block md:mr-0">
-                <a href="#" className="no-underline hover:underline text-gray-400 hover:text-orange-500">Facebook</a>
+                <a href="https://www.instagram.com/spillmob/" className="no-underline hover:underline text-gray-400 hover:text-orange-500">Instagram</a>
               </li>
               <li className="mt-2 inline-block mr-2 md:block md:mr-0">
-                <a href="#" className="no-underline hover:underline text-gray-400 hover:text-orange-500">Linkedin</a>
+                <a href="https://www.linkedin.com/company/realspill" className="no-underline hover:underline text-gray-400 hover:text-orange-500">Linkedin</a>
               </li>
               <li className="mt-2 inline-block mr-2 md:block md:mr-0">
-                <a href="#" className="no-underline hover:underline text-gray-400 hover:text-orange-500">Twitter</a>
+                <a href="https://twitter.com/SpillMob" className="no-underline hover:underline text-gray-400 hover:text-orange-500">Twitter</a>
               </li>
             </ul>
           </div>

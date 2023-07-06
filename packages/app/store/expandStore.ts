@@ -5,7 +5,8 @@ export interface ExpandSlice {
   toggleExpansion: () => void
 }
 
-export const createExpandedStore: StateCreator<ExpandSlice> = (set) => ({
+export const createExpandedStore: StateCreator<ExpandSlice> = (set, get) => ({
   isExpanded: true,
-  toggleExpansion: () => set((state) => ({ isExpanded: !state.isExpanded })),
+  toggleExpansion: () =>
+    set((state) => ({ isExpanded:  !state.isExpanded })),
 })

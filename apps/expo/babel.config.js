@@ -15,12 +15,6 @@ module.exports = function (api) {
         },
       ],
       [
-        '@babel/plugin-proposal-private-methods',
-        {
-          loose: true,
-        },
-      ],
-      [
         'module-resolver',
         {
           root: ['./'],

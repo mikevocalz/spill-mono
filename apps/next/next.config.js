@@ -47,7 +47,7 @@ const nextConfig = {
     'react-wavify',
     'react-native-reanimated-carousel',
     'expo-av',
-    'expo-asset'
+    'expo-asset',
   ],
 
   webpack: (config, options) => {

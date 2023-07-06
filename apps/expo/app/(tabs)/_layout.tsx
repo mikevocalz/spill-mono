@@ -6,6 +6,11 @@ import { useColorScheme } from 'react-native';
 import LogoTitle from 'app/components/LogoTitle'
 import { Pressable } from 'app/design/TailwindComponents';
 import { ComponentProps } from 'react';
+import { FAB } from 'react-native-paper'
+
+import { useAppStore } from 'app/store/store';
+import ExpandedIcon from 'app/components/ExpandedIcon';
+import CollapsedIcon from 'app/components/CollapsedIcon';
 
 /**
  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
@@ -24,9 +29,15 @@ function MatTabBarIcon(props: {
   return <MaterialCommunityIcons size={28} style={{ marginBottom: -3 }} {...props} />;
 }
 
+
+const IconEX = () => <ExpandedIcon style={{ marginLeft: -8 }} height={35} width={35} />
+const IconCol = () => <CollapsedIcon style={{ marginLeft: -8 }} height={35} width={35} />
+
 export default function TabLayout() {
   const colorScheme = useColorScheme();
-  let isExpaned
+  const expand = useAppStore((state) => state.toggleExpansion)
+  const isExpanded = useAppStore((state) => state.isExpanded)
+
   return (
     <Tabs
       screenOptions={{
@@ -51,10 +62,10 @@ export default function TabLayout() {
           shadowColor: 'transparent',
           backgroundColor: "#0f24cf",
           position: 'absolute',
-          bottom: 8,
+          bottom: 0,
           left: 0,
           right: 0,
-          height: 60,
+          //height: 70,
           borderRadius: 15,
           paddingBottom: 5,
           borderTopWidth: 0,
@@ -111,25 +122,25 @@ export default function TabLayout() {
         name="empty"
         options={{
           title: 'Empty',
-          tabBarButton: ({ isExpanded }) => (
+          tabBarButton: () =>
             <Pressable
+              onPress={() => expand()}
               style={{
-                marginTop: -10,
+                marginTop: -14,
                 backgroundColor: '#ec562a',
                 borderRadius: 10,
                 width: 70,
-                height: 60,
+                height: 66,
                 alignItems: 'center',
-                justifyContent: 'center'
+                justifyContent: 'center',
+                paddingLeft: 10
               }}
-              className='h-70 w-70 bg-red-700'
             >
-              <MatTabBarIcon name={isExpanded ? 'arrow-expanded-vertical' : 'arrow-collapse-vertical'} color={'#000'} />
-            </Pressable>
-          )
+              {isExpanded ? <IconCol /> : <IconEX />}
+            </Pressable>,
         }}
       />
-      <Tabs.Screen
+      < Tabs.Screen
         name="two"
         options={{
           title: 'Spillboard',

@@ -28,6 +28,7 @@ export const SpillContainer: FC = () => {
         />
         <View className="flex-1 outline-none w-full max-w-[750px] bg-black text-white pb-9  rounded-3xl">
           <TextInput
+
             onChangeText={(text) => setSpillText(text)}
             className="w-full text-lg  mb-3 max-w-[750px] bg-black text-white p-4 rounded-3xl focus:outline-none"
             numberOfLines={3}

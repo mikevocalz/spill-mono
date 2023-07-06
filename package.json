@@ -15,8 +15,13 @@
     "typescript": "^5.1.6"
   },
   "scripts": {
-    "native": "cd apps/expo && yarn start",
-    "web": "cd apps/next && yarn next"
+    "native": "cd apps/expo && yarn start -c",
+    "web": "cd apps/next && yarn next",
+    "clean": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + "
+  },
+  "experiments": {
+    "tsconfigPaths": true,
+    "typedRoutes": true
   },
   "packageManager": "yarn@3.4.1"
 }

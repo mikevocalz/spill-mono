@@ -1,21 +1,17 @@
-import { A, H1, P, Text, TextLink } from 'app/design/typography'
-import { Row } from 'app/design/layout'
-import { View } from 'app/design/view'
 
 import { MotiLink } from 'solito/moti'
 import { Button } from 'react-native-paper'
-import { ScreenScrollView } from 'app/components/ScreenSrollView'
 import BottomSheet from '@gorhom/bottom-sheet';
-import { useRef, useMemo, useCallback } from 'react'
-import { Dimensions, Platform } from 'react-native'
-import { TextInput, } from 'app/design/TailwindComponents'
-import { Container, HomeContainer } from 'app/features/home/container';
+import { useRef, useMemo, useCallback, useState } from 'react'
+import { Animated, Dimensions, Platform, KeyboardAvoidingView, Keyboard } from 'react-native'
+import { TextInput, View, Image, Text } from 'app/design/TailwindComponents'
+import { HomeContainer } from 'app/features/home/container';
 import { SpillContainer } from 'app/components/SpillContainer'
 import { FAB } from 'react-native-paper'
 import { useAppStore } from 'app/store/store'
 import ExpandedIcon from 'app/components/ExpandedIcon'
 import CollapsedIcon from 'app/components/CollapsedIcon'
-
+import { BottomKeyboardAvoidingView } from 'app/components/BottomKeyboardAvoidingView';
 
 
 const { width, height } = Dimensions.get('screen')
@@ -33,7 +29,7 @@ export function HomeScreen() {
 
   // Setting the points to which we want the bottom sheet to be set to
   // Using '-30' here so that it is not seen when it is not presented
-  const snapPoints = useMemo(() => ['30%', '55%', '98%'], []);
+  const snapPoints = useMemo(() => ['31%', '55%', '98%'], []);
 
   // Callback function that gets called when the bottom sheet changes
   const handleSheetChanges = useCallback((index: number) => {
@@ -45,15 +41,29 @@ export function HomeScreen() {
     bottomSheetRef?.current?.expand();
   }
 
+  const [bottomSheetOpen, setBottomSheetOpen] = useState(false);
+
+  const handleBottomSheetOpen = () => {
+    setBottomSheetOpen(true);
+  };
+
+  const handleBottomSheetClose = () => {
+    setBottomSheetOpen(false);
+  };
+
   const isMobile = width >= 400
+  const isWeb = Platform.OS === 'web'
+
 
   return (
-    <ScreenScrollView
-      contentContainerStyle={{
-        alignItems: 'center',
-        alignContent: 'center',
+    <View
+      style={{
+        alignSelf: 'center',
+        alignItems: 'center'
       }}
-      className="flex-1 w-full items-center bg-black h-screen min-w-screen min-h-screen px-4 pb-[400px] " >
+
+      className={`flex-1 w-full  bg-black h-screen min-w-screen min-h-screen  ${isWeb ? 'items-center pb-[400px]' : 'pb-[500px] '
+        } `} >
 
 
       {Platform.OS === 'web' && <SpillContainer />}
@@ -67,6 +77,9 @@ export function HomeScreen() {
           snapPoints={snapPoints}
           onChange={handleSheetChanges}
           //enablePanDownToClose
+          onClose={handleBottomSheetClose}
+          //onDismiss={() => handleBottomSheetClose}
+
           handleStyle={{
             backgroundColor: '#0f24cf',
             borderTopLeftRadius: 15,
@@ -84,12 +97,26 @@ export function HomeScreen() {
 
           }}
         >
-          <View className='h-screen w-full bg-[#0f24cf] px-4' >
-            <View className='items-center flex-row grid grid-rows-2 space-x-3 '>
-              <View className='h-10 w-10 bg-red-600 rounded-full' />
-              <View className='h-10 w-[85%] bg-black rounded-3xl' />
+          <BottomKeyboardAvoidingView
+            isOpen={bottomSheetOpen}
+          >
+
+            <View
+              className='h-screen w-full bg-[#0f24cf] px-4' >
+              <View className='items-center flex-row grid grid-rows-2 space-x-3 '>
+                <Image
+                  className="bg-white md:h-12 md:w-12 h-8 w-8 rounded-full border-[#0b7b0e] border-[1px]"
+                  unoptimized
+                  contentFit='cover'
+                  alt="app image"
+                  width={200}
+                  height={200}
+                  src={'https://i.pinimg.com/originals/6f/64/43/6f6443436071a11d533bbacf4d00361a.jpg'}
+                />
+                <View className='h-10 w-[85%] bg-black rounded-3xl' />
+              </View>
             </View>
-          </View>
+          </BottomKeyboardAvoidingView>
         </BottomSheet>
       }
 
@@ -113,6 +140,6 @@ export function HomeScreen() {
           }}
         />
       }
-    </ScreenScrollView >
+    </View >
   )
 }
