@@ -14,12 +14,6 @@ import { useWindowDimensions } from 'react-native'
 
 function WebLayout({ children }: { children: ReactNode }) {
 
-
-  const { width, height } = useWindowDimensions();
-
-
-
-
   return (
     <>
       <HeaderComponent />

@@ -8,10 +8,26 @@ import { ScreenScrollView } from 'app/components/ScreenSrollView'
 import BottomSheet from '@gorhom/bottom-sheet';
 import { useRef, useMemo, useCallback } from 'react'
 import { Dimensions, Platform } from 'react-native'
-import { TextInput } from 'app/design/TailwindComponents'
+import { TextInput, } from 'app/design/TailwindComponents'
+import { Container, HomeContainer } from 'app/features/home/container';
+import { SpillContainer } from 'app/components/SpillContainer'
+import { FAB } from 'react-native-paper'
+import { useAppStore } from 'app/store/store'
+import ExpandedIcon from 'app/components/ExpandedIcon'
+import CollapsedIcon from 'app/components/CollapsedIcon'
+
+
 
 const { width, height } = Dimensions.get('screen')
+
+const IconEX = <ExpandedIcon style={{ marginLeft: -8 }} height={35} width={35} />
+const IconCol = <CollapsedIcon style={{ marginLeft: -8 }} height={35} width={35} />
+
 export function HomeScreen() {
+  const isExpanded = useAppStore((state) => state.isExpanded);
+
+  const expand = useAppStore((state) => state.toggleExpansion)
+
   // Creates a reference to the DOM element that we can interact with
   const bottomSheetRef = useRef<BottomSheet>(null);
 
@@ -28,16 +44,23 @@ export function HomeScreen() {
   const onAddButtonPress = () => {
     bottomSheetRef?.current?.expand();
   }
+
+  const isMobile = width >= 400
+
   return (
     <ScreenScrollView
       contentContainerStyle={{
         alignItems: 'center',
-
+        alignContent: 'center',
       }}
-      className="flex-1 bg-black h-screen min-w-screen min-h-screen">
+      className="flex-1 w-full items-center bg-black h-screen min-w-screen min-h-screen px-4 pb-[400px] " >
 
-      <H1 className='text-white'>Home</H1>
-      {Platform.OS !== 'web' &&
+
+      {Platform.OS === 'web' && <SpillContainer />}
+
+      < HomeContainer />
+      {
+        Platform.OS !== 'web' &&
         <BottomSheet
           ref={bottomSheetRef}
           index={0} // Hide the bottom sheet when we first load our component 
@@ -68,6 +91,27 @@ export function HomeScreen() {
             </View>
           </View>
         </BottomSheet>
+      }
+
+      {
+        Platform.OS === 'web' &&
+        <FAB
+          icon={() => isExpanded ? IconCol : IconEX}
+          onPress={() => expand()}
+          mode='elevated'
+          style={{
+            borderRadius: 12,
+            height: 50,
+            width: 50,
+            zIndex: 1000,
+            justifyContent: 'center',
+            backgroundColor: '#ec562a',
+            right: '6%',
+            bottom: 30,
+            position: 'fixed',
+            display: 'flex'
+          }}
+        />
       }
     </ScreenScrollView >
   )
