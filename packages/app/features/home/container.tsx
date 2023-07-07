@@ -70,9 +70,8 @@ export const HomeContainer: FC = () => {
 
       <FlatList
         showsVerticalScrollIndicator={false}
-        className=' w-screen max-w-4xl px-4'
+        className=' h-full w-screen max-w-4xl px-4'
         contentContainerStyle={{
-          flexGrow: 1,
           paddingBottom: Platform.OS === 'web' ? 400 : 300
         }}
         ListHeaderComponent={() => <View className='h-14' />}

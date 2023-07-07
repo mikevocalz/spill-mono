@@ -1,7 +1,7 @@
 
 import { MotiLink } from 'solito/moti'
 import { Button } from 'react-native-paper'
-import BottomSheet from '@gorhom/bottom-sheet';
+import BottomSheet, { useBottomSheet } from '@gorhom/bottom-sheet';
 import { useRef, useMemo, useCallback, useState } from 'react'
 import { Animated, Dimensions, Platform, KeyboardAvoidingView, Keyboard } from 'react-native'
 import { TextInput, View, Image, Text } from 'app/design/TailwindComponents'
@@ -13,6 +13,7 @@ import ExpandedIcon from 'app/components/ExpandedIcon'
 import CollapsedIcon from 'app/components/CollapsedIcon'
 import { BottomKeyboardAvoidingView } from 'app/components/BottomKeyboardAvoidingView';
 
+import { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
 const { width, height } = Dimensions.get('screen')
 
@@ -54,6 +55,20 @@ export function HomeScreen() {
   const isMobile = width >= 400
   const isWeb = Platform.OS === 'web'
 
+  const widthAnimation = useSharedValue(0);
+
+  const animatedStyles = useAnimatedStyle(() => {
+    return {
+      width: withTiming(widthAnimation.value),
+    };
+  });
+
+  const openBottomSheet = () => {
+    bottomSheetRef?.current?.expand(); // Expand the BottomSheet
+    widthAnimation.value = 400; // Set the target width value
+  };
+
+  const [spillText, setSpillText] = useState('');
 
   return (
     <View
@@ -73,13 +88,14 @@ export function HomeScreen() {
         Platform.OS !== 'web' &&
         <BottomSheet
           ref={bottomSheetRef}
+
           index={0} // Hide the bottom sheet when we first load our component 
           snapPoints={snapPoints}
           onChange={handleSheetChanges}
           //enablePanDownToClose
+          onOpen={openBottomSheet()}
           onClose={handleBottomSheetClose}
           //onDismiss={() => handleBottomSheetClose}
-
           handleStyle={{
             backgroundColor: '#0f24cf',
             borderTopLeftRadius: 15,
@@ -97,26 +113,42 @@ export function HomeScreen() {
 
           }}
         >
-          <BottomKeyboardAvoidingView
-            isOpen={bottomSheetOpen}
-          >
 
-            <View
-              className='h-screen w-full bg-[#0f24cf] px-4' >
-              <View className='items-center flex-row grid grid-rows-2 space-x-3 '>
-                <Image
-                  className="bg-white md:h-12 md:w-12 h-8 w-8 rounded-full border-[#0b7b0e] border-[1px]"
-                  unoptimized
-                  contentFit='cover'
-                  alt="app image"
-                  width={200}
-                  height={200}
-                  src={'https://i.pinimg.com/originals/6f/64/43/6f6443436071a11d533bbacf4d00361a.jpg'}
-                />
-                <View className='h-10 w-[85%] bg-black rounded-3xl' />
-              </View>
+
+          <View
+            className='h-screen w-full bg-[#0f24cf] px-4' >
+            <View className='items-center flex-row  flex-row grid grid-rows-2 space-x-3 '>
+
+              <Image
+                className="bg-white md:h-12 md:w-12 h-8 w-8 rounded-full border-[#0b7b0e] border-[1px]"
+                unoptimized
+                contentFit='cover'
+                alt="app image"
+                width={200}
+                height={200}
+                src={'https://i.pinimg.com/originals/6f/64/43/6f6443436071a11d533bbacf4d00361a.jpg'}
+              />
+
+              <TextInput
+                numberOfLines={3}
+                onClick={openBottomSheet}
+                multiline
+                maxLength={90}
+                selectionColor={'blue'}
+                value={spillText}
+                placeholder="What's Ya #SPILL?"
+                onChangeText={(text) => setSpillText(text)}
+                style={[{
+
+                  width: '88%',
+                  height: 40,
+                  backgroundColor: 'black',
+                },
+                ]}
+              />
+
             </View>
-          </BottomKeyboardAvoidingView>
+          </View>
         </BottomSheet>
       }
 

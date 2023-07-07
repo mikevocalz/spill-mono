@@ -42,7 +42,7 @@ const HighlightedHashtags = ({ text }) => {
   return <Text numberOfLines={4}
     allowFontScaling={true}
     style={{
-      fontSize: fontSizes,
+
       flexWrap: 'wrap',
       fontFamily: 'SFPro'
     }}

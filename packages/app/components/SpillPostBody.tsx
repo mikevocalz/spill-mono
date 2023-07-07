@@ -18,7 +18,7 @@ const SpillPostBody = (props) => {
 
       <View className={`${isExpanded ? 'mb-0' : 'mb-8'} flex-row justify-between   `}>
         <View className={`flex-1 h-full  w-screen ${isExpanded ? 'flex-col' : 'flex-row px-4'}  max-w-5xl min-h-[80px]  h-full`}>
-          <Image className={`${isExpanded ? 'w-full  min-h-[500px]' : 'w-full max-w-[25%] my-4 h-auto max-h-[140px] '} `}
+          <Image className={`${isExpanded ? 'w-full  min-h-[300px]' : 'w-full max-w-[25%] my-4 h-auto max-h-[140px] '} `}
             unoptimized
             alt="image 1"
             contentFit='cover'
