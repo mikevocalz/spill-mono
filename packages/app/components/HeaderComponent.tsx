@@ -56,9 +56,9 @@ const authTabs: Array<{
       protected: false,
     },
     {
-      pathname: '/billboard',
-      isActive: (pathname) => pathname.startsWith('/news'),
-      name: '#Billboard',
+      pathname: '/spillboard',
+      isActive: (pathname) => pathname.startsWith('/spillboard'),
+      name: '#Spillboard',
       protected: false,
     }, {
       pathname: '/teapot',
@@ -75,7 +75,7 @@ const HeaderComponent: FC = () => {
   const { width } = useWindowDimensions()
   const pathname = usePathname();
   const isMobile = window.innerWidth <= 720
-  const homePath = pathname === ('/home')
+  const homePath = pathname === ('/home') || ('/spillboard') || ('/search') || ('/teapot')
 
 
   return (

@@ -19,7 +19,7 @@ function TabBarIcon(props: {
   name: ComponentProps<typeof FontAwesome>['name'];
   color: string;
 }) {
-  return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
+  return <FontAwesome size={28} style={{ marginBottom: 0 }} {...props} />;
 }
 
 function MatTabBarIcon(props: {
@@ -43,19 +43,19 @@ export default function TabLayout() {
       screenOptions={{
         tabBarActiveTintColor: '#efcf37',
         tabBarInactiveTintColor: '#fff',
-        tabBarShowLabel: false,
+        tabBarShowLabel: true,
         tabBarLabelStyle: {
           fontFamily: 'SFPro',
-          fontSize: 16,
+          marginBottom: 14,
+          fontSize: 10,
           textTransform: 'uppercase',
-          marginBottom: -2,
           letterSpacing: 2,
         },
         headerTitleAlign: 'center',
         headerStyle: {
           backgroundColor: "#0b7b11",
-          borderBottomLeftRadius: 15,
-          borderBottomRightRadius: 15,
+          borderBottomLeftRadius: 20,
+          borderBottomRightRadius: 20,
         },
         headerTintColor: '#fff',
         tabBarStyle: {
@@ -65,8 +65,8 @@ export default function TabLayout() {
           bottom: 0,
           left: 0,
           right: 0,
-          //height: 70,
-          borderRadius: 15,
+          height: 75,
+          borderRadius: 20,
           paddingBottom: 5,
           borderTopWidth: 0,
           elevation: 0,
@@ -126,14 +126,14 @@ export default function TabLayout() {
             <Pressable
               onPress={() => expand()}
               style={{
-                marginTop: -14,
+                marginTop: -9,
                 backgroundColor: '#ec562a',
-                borderRadius: 10,
-                width: 70,
-                height: 66,
+                borderRadius: 55 / 2,
+                width: 55,
+                height: 55,
                 alignItems: 'center',
                 justifyContent: 'center',
-                paddingLeft: 10
+                paddingLeft: 8
               }}
             >
               {isExpanded ? <IconCol /> : <IconEX />}

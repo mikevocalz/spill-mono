@@ -2,7 +2,7 @@
 import { View, Text, Span } from "app/design/TailwindComponents";
 import { useAppStore } from "app/store/store";
 import { fontPixel } from "./normalize";
-import { useWindowDimensions } from "react-native";
+import { Platform, useWindowDimensions } from "react-native";
 
 
 
@@ -42,9 +42,8 @@ const HighlightedHashtags = ({ text }) => {
   return <Text numberOfLines={4}
     allowFontScaling={true}
     style={{
-
+      fontSize: Platform.OS === 'web' ? fontPixel(44) : fontPixel(28),
       flexWrap: 'wrap',
-      fontFamily: 'SFPro'
     }}
     className="flex flex-row w-full break-words font-[SFProDisplay-Bold]"
   >{highlightedWords} </Text>

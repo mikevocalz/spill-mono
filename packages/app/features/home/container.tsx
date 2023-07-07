@@ -26,7 +26,21 @@ const data = [
 
   },
   {
-    text: 'Its time to Boogie with the Bear #PowerRangerSpill',
+    text: 'When lightnin srikes #DCSpill. Yall misss BlackLightning?',
+    img: 'https://akns-images.eonline.com/eol_images/Entire_Site/20201020/rs_1200x1200-201120115519-1200-Cress-Williams-Black-Lightning-LT-112020-CW.jpg',
+    hash: '#DCSpill',
+    avatar: 'https://tvline.com/wp-content/uploads/2021/01/black-lightning-final-season-trailer.png',
+    userName: 'MrPierce'
+  },
+  {
+    text: 'This Zack dont Crack!! #PowerRangersSpill',
+    img: 'https://i.ytimg.com/vi/D6SMZnD8hYs/maxresdefault.jpg',
+    hash: '#PRSpill',
+    avatar: 'https://static.wikia.nocookie.net/powerrangers/images/5/52/ZackS2.png',
+    userName: 'KingZack'
+  },
+  {
+    text: 'Its time to Boogie with the Bear #PowerRangersSpill',
     img: 'https://i.ytimg.com/vi/APIFOoaNXpw/maxresdefault.jpg',
     hash: '#PowerRangerSpill',
     avatar: 'https://assets2.ignimgs.com/2016/10/31/supergirl-tv-miss-martian-revealjpg-f48300_160w.jpg',
