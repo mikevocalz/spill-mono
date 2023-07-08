@@ -107,16 +107,17 @@ export function HomeScreen() {
           handleStyle={{
             backgroundColor: '#0f24cf',
             borderTopLeftRadius: 15,
-            borderTopRightRadius: 15
+            borderTopRightRadius: 15,
+
           }}
           containerStyle={{
             alignSelf: 'center',
             height: height,
-
+            width: '100%'
           }}
           style={{
             alignSelf: 'center',
-            zIndex: -700,
+            // zIndex: -700,
             width: '100%',
 
           }}

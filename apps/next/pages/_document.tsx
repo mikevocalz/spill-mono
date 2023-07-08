@@ -98,6 +98,7 @@ class Document extends NextDocument {
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <meta name="theme-color" content="#0b7b0e" />
           <meta name="msapplication-navbutton-color" content="#0b7b0e" />
+          <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta name="apple-mobile-web-app-status-bar-style" content="#0b7b0e" />
         </Head>
         <body className="scrollbar-thin scrollbar-thumb-[#0b7b0e] scrollbar-track-[#efcf37] scrollbar-thumb-rounded-full scrollbar-track-rounded-full h-32 overflow-y-scroll bg-gradient-to-r from-gray-300 to-[#c7dedc]">
