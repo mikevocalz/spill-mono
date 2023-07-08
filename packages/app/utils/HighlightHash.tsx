@@ -48,7 +48,7 @@ const HighlightedHashtags = ({ text }) => {
     numberOfLines={4}
     allowFontScaling={true}
     style={{
-      fontSize: width > 600 ? fontPixel(60) : width < 600 ? fontPixel(38) : width > 600 ? fontPixel(40) : width > 400 ? fontPixel(20) : fontPixel(20)
+      fontSize: width > 600 ? fontPixel(60) : width < 600 ? fontPixel(38) : width > 600 ? fontPixel(40) : width > 400 ? fontPixel(20) : fontPixel(10)
     }}
     className="flex flex-wrap flex-row w-full break-all font-[SFProDisplay-Bold] "
   >{highlightedWords} </Text>

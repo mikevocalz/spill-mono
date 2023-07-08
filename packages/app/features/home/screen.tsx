@@ -29,6 +29,7 @@ export function HomeScreen() {
 
   // Creates a reference to the DOM element that we can interact with
   const bottomSheetRef = useRef<BottomSheet>(null);
+  const inputRef = useRef<TextInput>(null)
 
   const [visible, setVisble] = useState(true)
   // Setting the points to which we want the bottom sheet to be set to
@@ -39,10 +40,10 @@ export function HomeScreen() {
   const handleSheetChanges = useCallback((index: number) => {
     console.log('handleSheetChanges', index);
     if (index === 1) {
-      setVisble(!visible)
+      setVisble(!visible);
+      inputRef?.current?.focus();
     } else
       setVisble(true)
-
 
   }, [visible]);
 
@@ -54,6 +55,7 @@ export function HomeScreen() {
   const [bottomSheetOpen, setBottomSheetOpen] = useState(false);
 
   const handleBottomSheetOpen = () => {
+    inputRef?.current?.focus();
     setBottomSheetOpen(true);
     bottomSheetRef?.current?.expand();
 
@@ -91,11 +93,14 @@ export function HomeScreen() {
         Platform.OS !== 'web' &&
         <BottomSheet
           ref={bottomSheetRef}
-
+          keyboardBehavior="interactive"
+          keyboardBlurBehavior="restore"
+          android_keyboardInputMode='adjustPan'
           index={0} // Hide the bottom sheet when we first load our component 
           snapPoints={snapPoints}
           onChange={handleSheetChanges}
-          //enablePanDownToClose
+          enablePanDownToClose
+
 
           onClose={handleBottomSheetClose}
           //onDismiss={() => handleBottomSheetClose}
@@ -165,6 +170,7 @@ export function HomeScreen() {
                   </Pressable>
                 </View>
                 <MotiInput
+                  ref={inputRef}
                   from={{
                     opacity: 0,
                     scale: 0.8,
@@ -187,6 +193,8 @@ export function HomeScreen() {
                   placeholder="What's Ya #SPILL?"
                   onChangeText={(text) => setSpillText(text)}
                   placeholderTextColor={'grey'}
+                  returnKeyLabel='Spill'
+                  returnKeyType='send'
                   style={[{
                     width: '100%',
                     height: '40%',

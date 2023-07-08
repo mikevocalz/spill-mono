@@ -66,24 +66,7 @@ export const HomeContainer: FC = () => {
     <View
 
       className='items-center min-h-screen w-screen max-w-4xl  '>
-      <View style={{ zIndex: -1000 }} className=" w-full fixed  bg-black h-[100px]" />
-
-
-      {/* {
-        data.map((item, idx) => {
-          return (
-            <SpillPostListItem
-              key={idx}
-              imgSrc={item?.img}
-              text={item?.text}
-              hash={item?.hash}
-              avatar={item?.avatar}
-              username={item?.username}
-            />
-          )
-        })
-      } */}
-
+      {Platform.OS === 'web' && <View style={{ zIndex: -1000 }} className=" w-full fixed  bg-black h-[100px]" />}
 
       <FlatList
         showsVerticalScrollIndicator={false}
@@ -98,7 +81,7 @@ export const HomeContainer: FC = () => {
           paddingBottom: Platform.OS === 'web' ? 400 : 300
         }}
         ListHeaderComponent={() => <View className='h-14' />}
-        ItemSeparatorComponent={() => <View className='h-6 md:h-[400px]' />}
+        ItemSeparatorComponent={() => <View className='h-10 md:h-[400px]' />}
 
         data={data}
         bounces={false}

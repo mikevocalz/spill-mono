@@ -3,7 +3,7 @@ import { View } from "app/design/view"
 
 const FooterComponent = () => {
   return (
-    <View className="bg-black w-full">
+    <View style={{ zIndex: -1000 }} className="bg-black w-full">
       <div className="container mx-auto max-w-7xl  px-8">
 
         <div className="w-full flex flex-col md:flex-row py-6">

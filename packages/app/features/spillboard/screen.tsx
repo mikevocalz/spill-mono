@@ -1,6 +1,6 @@
 import { A, H1, } from 'app/design/typography'
 
-import { Button } from 'react-native-paper'
+import { Button, IconButton } from 'react-native-paper'
 import { ScreenScrollView } from 'app/components/ScreenSrollView'
 import HashTagList from 'app/components/HashTagList'
 import { Platform, StyleSheet } from 'react-native'
@@ -83,7 +83,7 @@ export function SpillBoardScreen() {
       className="flex-1 flex-wrap bg-zinc-700 w-full h-screen min-w-screen min-h-screen max-w-7xl">
 
       <H1 className='text-white text-center'>Spillboard</H1>
-
+      <IconButton icon={'home'} />
       <FlatList
         data={data}
         numColumns={2}
