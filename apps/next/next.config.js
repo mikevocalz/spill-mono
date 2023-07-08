@@ -48,6 +48,7 @@ const nextConfig = {
     'react-native-reanimated-carousel',
     'expo-av',
     'expo-asset',
+    'expo-font',
   ],
 
   webpack: (config, options) => {

@@ -76,8 +76,9 @@ const HeaderComponent: FC = () => {
   const pathname = usePathname();
   const isMobile = window.innerWidth <= 720
   const homePath = pathname === ('/home')
-  const authPath = pathname === ('/home') || ('/spillboard') || ('/search') || ('/teapot')
+  const authPath = pathname.startsWith('/home') || pathname.startsWith('/spillboard') || pathname.startsWith('/search') || pathname.startsWith('/teapot')
 
+  const nonAuthPath = pathname === '/' || pathname.startsWith('/news') || pathname.startsWith('/team') || pathname.startsWith('/careers')
 
   return (
     <Header className={`fixed w-full z-30 top-0 text-white h-[70px] ${authPath ? 'bg-[#0b7b0e]' : 'bg-transparent'}`}>
@@ -106,7 +107,7 @@ const HeaderComponent: FC = () => {
 
         }
 
-        {!authPath ?
+        {nonAuthPath &&
           <Nav className="w-full mr-4 space-x-4 flex-row lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white lg:bg-transparent text-white p-4 lg:p-0 z-20" >
             {tabs.map((tab) => {
               const active = tab.isActive(pathname)
@@ -148,7 +149,9 @@ const HeaderComponent: FC = () => {
                 className={`mx-auto lg:mx-0  bg-[#ec562a] text-gray-200 font-bold rounded-lg mt-4  lg:mt-0 py-2 px-8`}>Login</MotiLink>
             }
           </Nav>
-          :
+        }
+
+        {authPath &&
           < Nav className={` ${isMobile ? 'hidden' : ''} w-full mr-4 space-x-4 flex-row lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white lg:bg-transparent text-white p-4 lg:p-0 z-20`}>
 
             {authTabs.map((tab) => {
