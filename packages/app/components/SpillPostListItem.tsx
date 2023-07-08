@@ -15,7 +15,7 @@ const SpillPostListItem = (props) => {
     <MotiArticle
       from={{
         opacity: 0,
-        scale: 0.5,
+        scale: 0.8,
       }}
       animate={{
         opacity: 1,
@@ -31,7 +31,7 @@ const SpillPostListItem = (props) => {
         opacity: 0,
         scale: 0.5,
       }}
-      className={`flex-1 flex w-full  mb-2 max-w-5xl ${isExpanded ? 'transparent' : 'bg-zinc-800'} rounded-3xl`}>
+      className={`flex-1 flex w-full max-h-[400px]  mb-4 max-w-5xl ${isExpanded ? 'transparent' : 'bg-zinc-800'} rounded-3xl`}>
       <SpillPostBody
         imgSrc={props.imgSrc}
         text={props.text}
@@ -46,3 +46,6 @@ const SpillPostListItem = (props) => {
 }
 
 export default SpillPostListItem
+
+
+

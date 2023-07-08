@@ -75,11 +75,12 @@ const HeaderComponent: FC = () => {
   const { width } = useWindowDimensions()
   const pathname = usePathname();
   const isMobile = window.innerWidth <= 720
-  const homePath = pathname === ('/home') || ('/spillboard') || ('/search') || ('/teapot')
+  const homePath = pathname === ('/home')
+  const authPath = pathname === ('/home') || ('/spillboard') || ('/search') || ('/teapot')
 
 
   return (
-    <Header className={`fixed w-full z-30 top-0 text-white h-[70px] ${homePath ? 'bg-[#0b7b0e]' : 'bg-transparent'}`}>
+    <Header className={`fixed w-full z-30 top-0 text-white h-[70px] ${authPath ? 'bg-[#0b7b0e]' : 'bg-transparent'}`}>
 
       <View className="w-full max-w-7xl  mx-auto flex-row items-center justify-between mt-0 py-[16px]">
 
@@ -105,7 +106,7 @@ const HeaderComponent: FC = () => {
 
         }
 
-        {!homePath &&
+        {!authPath ?
           <Nav className="w-full mr-4 space-x-4 flex-row lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white lg:bg-transparent text-white p-4 lg:p-0 z-20" >
             {tabs.map((tab) => {
               const active = tab.isActive(pathname)
@@ -147,9 +148,7 @@ const HeaderComponent: FC = () => {
                 className={`mx-auto lg:mx-0  bg-[#ec562a] text-gray-200 font-bold rounded-lg mt-4  lg:mt-0 py-2 px-8`}>Login</MotiLink>
             }
           </Nav>
-        }
-
-        {homePath &&
+          :
           < Nav className={` ${isMobile ? 'hidden' : ''} w-full mr-4 space-x-4 flex-row lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white lg:bg-transparent text-white p-4 lg:p-0 z-20`}>
 
             {authTabs.map((tab) => {

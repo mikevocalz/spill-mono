@@ -1,20 +1,24 @@
 /* eslint-disable react/jsx-key */
 import { View, Text, Span } from "app/design/TailwindComponents";
 import { useAppStore } from "app/store/store";
+import { Platform, StyleSheet, useWindowDimensions } from "react-native";
 import { fontPixel } from "./normalize";
-import { Platform, useWindowDimensions } from "react-native";
-
 
 
 const HighlightedHashtags = ({ text }) => {
-  const fontSizes = () => {
-    if (width >= 600) {
-      fontPixel(48)
-    }
-    return
-  }
+
+
+
 
   const { width } = useWindowDimensions()
+
+  function fontSizes() {
+    if (width > 600) {
+      fontPixel(48)
+    }
+    else fontPixel(48)
+  }
+
   const isExpanded = useAppStore((state) => state.isExpanded)
 
   // Regular expression to find hashtag words
@@ -39,14 +43,18 @@ const HighlightedHashtags = ({ text }) => {
     }
   });
 
-  return <Text numberOfLines={4}
+  return <Text
+    //adjustsFontSizeToFit
+    numberOfLines={4}
     allowFontScaling={true}
     style={{
-      fontSize: Platform.OS === 'web' ? fontPixel(44) : fontPixel(28),
-      flexWrap: 'wrap',
+      fontSize: width > 600 ? fontPixel(60) : width < 600 ? fontPixel(38) : width > 600 ? fontPixel(40) : width > 400 ? fontPixel(20) : fontPixel(20)
     }}
-    className="flex flex-row w-full break-words font-[SFProDisplay-Bold]"
+    className="flex flex-wrap flex-row w-full break-all font-[SFProDisplay-Bold] "
   >{highlightedWords} </Text>
 };
+
+
+
 
 export default HighlightedHashtags

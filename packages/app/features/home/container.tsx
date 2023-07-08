@@ -26,7 +26,7 @@ const data = [
 
   },
   {
-    text: 'When lightnin srikes #DCSpill. Yall misss BlackLightning?',
+    text: 'When lightnin srikes ⚡ #DCSpill ⚡. Yall misss Black Lightnin?',
     img: 'https://akns-images.eonline.com/eol_images/Entire_Site/20201020/rs_1200x1200-201120115519-1200-Cress-Williams-Black-Lightning-LT-112020-CW.jpg',
     hash: '#DCSpill',
     avatar: 'https://tvline.com/wp-content/uploads/2021/01/black-lightning-final-season-trailer.png',
@@ -63,7 +63,10 @@ export const HomeContainer: FC = () => {
   );
 
   return (
-    <View className='items-center min-h-screen w-screen max-w-4xl  '>
+    <View
+
+      className='items-center min-h-screen w-screen max-w-4xl  '>
+      <View style={{ zIndex: -1000 }} className=" w-full fixed  bg-black h-[100px]" />
 
 
       {/* {
@@ -84,12 +87,18 @@ export const HomeContainer: FC = () => {
 
       <FlatList
         showsVerticalScrollIndicator={false}
-        className=' h-full w-screen max-w-4xl px-4'
+        style={{
+          zIndex: -1000,
+
+        }}
+        className=' w-screen max-w-4xl px-4 '
         contentContainerStyle={{
+          paddingTop: Platform.OS === 'web' ? 200 : 0,
+          zIndex: 1000,
           paddingBottom: Platform.OS === 'web' ? 400 : 300
         }}
         ListHeaderComponent={() => <View className='h-14' />}
-        ItemSeparatorComponent={() => <View className='h-6 md:h-10' />}
+        ItemSeparatorComponent={() => <View className='h-6 md:h-[400px]' />}
 
         data={data}
         bounces={false}

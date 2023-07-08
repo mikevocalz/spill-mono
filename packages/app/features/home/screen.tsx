@@ -76,7 +76,8 @@ export function HomeScreen() {
     <View
       style={{
         alignSelf: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+
       }}
 
       className={`flex-1 w-full  bg-black h-screen min-w-screen min-h-screen  ${isWeb ? 'items-center pb-[400px]' : 'pb-[500px] '
@@ -222,7 +223,7 @@ export function HomeScreen() {
             backgroundColor: '#ec562a',
             right: '6%',
             bottom: 30,
-            position: 'absolute',
+            position: 'fixed',
             display: 'flex'
           }}
         />

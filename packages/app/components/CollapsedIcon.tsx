@@ -18,7 +18,7 @@ const CollapsedIcon = (props: SvgProps) => (
       fill="none"
       stroke="#000"
       strokeMiterlimit={10}
-      strokeWidth={35}
+      strokeWidth={55}
       rx={64.17}
       ry={64.17}
     />
