@@ -19,6 +19,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           name="description"
           content="Spill"
         />
+        <meta name="apple-mobile-web-app-status-bar-style" content="#0b7b0e" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Provider>
