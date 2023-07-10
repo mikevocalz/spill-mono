@@ -103,6 +103,38 @@ function RootLayoutNav() {
               </Pressable>
             ),
           }} />
+
+        <Stack.Screen
+          name="user/[id]"
+
+          options={({ route }) => ({
+            title: route.params.id,
+            presentation: 'fullScreenModal',
+            headerStyle: {
+              backgroundColor: "#000",
+            },
+            headerTitleStyle: {
+              fontFamily: 'SFPro',
+              fontWeight: 'bold',
+              fontSize: 18,
+
+            },
+            headerLeft: () => (
+              <Pressable onPress={back}>
+                {({ pressed }) => (
+                  <FontAwesome
+                    name='chevron-left'
+                    size={26}
+                    color={'white'}
+                    style={{ marginLeft: 10, opacity: pressed ? 0.5 : 1 }}
+                  />
+                )}
+              </Pressable>
+            ),
+          })}
+
+        />
+
       </Stack>
     </ThemeProvider>
   );

@@ -3,14 +3,23 @@ import { H1, } from 'app/design/typography'
 import { Button, IconButton } from 'react-native-paper'
 import { ScreenScrollView } from 'app/components/ScreenSrollView'
 import HashTagList from 'app/components/HashTagList'
-import { Dimensions, Platform, StyleSheet } from 'react-native'
+import { Dimensions, ImageProps, Platform, StyleSheet } from 'react-native'
 import { FlatList, Text, Pressable, Image, MotiLink, MotiPressable, View, Article, Footer, Header, Span } from 'app/design/TailwindComponents'
 import { useWindowDimensions } from 'react-native'
 import { fontPixel, heightPixel, widthPixel } from 'app/utils/normalize'
 import HighlightedHashtags from 'app/utils/HighlightHash'
+import { motify } from 'moti'
+
+const MotiArticle = motify(Article)();
+
+interface Data {
+  id: number;
+  text: string;
+  img: string
+}
 
 
-const data = [
+const data: Data[] = [
   {
     id: 1,
     text: 'Black Men start normalizing therapy and Self Care!',
@@ -68,9 +77,8 @@ const { width } = Dimensions.get('window')
 const isWeb = Platform.OS === 'web';
 
 export function SpillBoardScreen() {
-  const { width } = useWindowDimensions();
 
-  const SquareItem = ({ item }) => {
+  const SquareItem = ({ item, index }) => {
 
     return (
       // <MotiPressable
@@ -87,7 +95,11 @@ export function SpillBoardScreen() {
 
 
 
-      <Article className="overflow-hidden rounded-xl shadow-lg mx-2 bg-zinc-900">
+      <MotiArticle
+        from={{ opacity: 0, translateY: 100 }}
+        animate={{ opacity: 1, translateY: 0 }}
+        transition={{ delay: 800 }}
+        className="overflow-hidden rounded-xl shadow-lg mx-2 bg-zinc-900">
         <View className="p-2 aspect-[4/4] container w-[46vw] height-[46vh] relative max-w-md"  >
 
           <Image alt="Placeholder"
@@ -123,7 +135,7 @@ export function SpillBoardScreen() {
             <HighlightedHashtags text={item.text} />
           </View>
         </View>
-      </Article >
+      </MotiArticle>
     );
   };
 
@@ -131,7 +143,7 @@ export function SpillBoardScreen() {
     <View
 
 
-      className="flex-1 items-center  mx-auto container  w-full h-screen min-w-screen min-h-screen max-w-7xl">
+      className="flex-1 items-center  mx-auto container  w-full h-screen min-w-screen min-h-screen max-w-7xl ">
 
 
       <FlatList
@@ -152,37 +164,24 @@ export function SpillBoardScreen() {
           paddingVertical: Platform.OS === 'web' ? 30 : 15,
           marginBottom: Platform.OS === 'web' ? 40 : 10
         }}
+
         contentContainerStyle={{
+
           justifyContent: 'center',
-          paddingBottom: 300
+          paddingBottom: 140
+        }}
+
+        ListFooterComponent={() => <HashTagList />}
+        ListFooterComponentStyle={{
+          marginTop: 100,
+          paddingBottom: 300,
+          justifyContent: 'center'
         }}
       />
 
-      {/* <HashTagList /> */}
+
     </View>
   )
 }
 
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  square: {
-    flexGrow: 1,
-    aspectRatio: 1,
-    width: '45%',
-    height: 'auto',
-    margin: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'lightgray',
-  },
-  text: {
-    fontSize: 18,
-    color: 'white'
-  },
-});
