@@ -23,7 +23,7 @@ SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
   const [loaded, error] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-    SFPro: require('../assets/fonts/SFProDisplay-Bold.ttf'),
+    "SFProDisplay-Bold": require('../assets/fonts/SFProDisplay-Bold.ttf'),
     ...FontAwesome.font,
   });
 
@@ -60,7 +60,7 @@ function RootLayoutNav() {
             backgroundColor: "#efcf37",
           },
           headerTitleStyle: {
-            fontFamily: 'SFPro',
+            fontFamily: 'SFProDisplay-Bold',
             fontWeight: 'bold',
             fontSize: 26,
           },
@@ -86,7 +86,7 @@ function RootLayoutNav() {
               backgroundColor: "#ec562a",
             },
             headerTitleStyle: {
-              fontFamily: 'SFPro',
+              fontFamily: 'SFProDisplay-Bold',
               fontWeight: 'bold',
               fontSize: 26,
             },
@@ -114,7 +114,7 @@ function RootLayoutNav() {
               backgroundColor: "#000",
             },
             headerTitleStyle: {
-              fontFamily: 'SFPro',
+              fontFamily: 'SFProDisplay-Bold',
               fontWeight: 'bold',
               fontSize: 18,
 

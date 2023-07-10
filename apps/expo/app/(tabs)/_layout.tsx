@@ -44,7 +44,7 @@ export default function TabLayout() {
         tabBarInactiveTintColor: '#fff',
         tabBarShowLabel: true,
         tabBarLabelStyle: {
-          fontFamily: 'SFPro',
+          fontFamily: 'SFProDisplay-Bold',
           marginBottom: 14,
           fontSize: 10,
           textTransform: 'uppercase',

@@ -63,7 +63,7 @@ const HighlightedHashtags = ({ text }) => {
         },
         shadowRadius: isWeb ? 0 : 1,
         paddingBottom: 5,
-        fontFamily: isWeb ? '' : 'SFPro'
+        fontFamily: isWeb ? '' : 'SFProDisplay-Bold'
         // fontSize: width <= 1280 ? fontPixel(20) : width <= 768 ? fontPixel(26) : width <= 450 ? fontPixel(16) : fontPixel(20),
       }}
       className={`flex font-medium flex-wrap break-all font-[SFProDisplay-Bold]  text-left font-regular text-white ${isWeb ? 'text-xl xs:text-[26px] sm:text-[30px] md:text-[36px] lg:text-[40px] xl:text-[42px]' : 'ml-[8px]'} xs:text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl`}>
