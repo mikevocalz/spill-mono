@@ -68,8 +68,8 @@ const FooterComponent = () => {
           </div>
         </div>
       </div>
-      <View className="bg-[#0b7b03] w-full items-center justify-center h-8">
-        <Text className="font-bold">2023 © Spill App. All rights reserved.</Text>
+      <View className="bg-[#0b7b03] w-full items-center  h-[50px]">
+        <Text className="font-bold mt-3">2023 © Spill App. All rights reserved.</Text>
       </View>
     </View>
   )
