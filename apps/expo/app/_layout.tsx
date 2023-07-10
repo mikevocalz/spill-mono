@@ -5,7 +5,6 @@ import { SplashScreen, Stack } from 'expo-router';
 import { useEffect } from 'react';
 import { useColorScheme } from 'react-native';
 import { useRouter } from 'solito/navigation'
-import { Link } from 'solito/link'
 import { Pressable } from 'app/design/TailwindComponents';
 
 export {
@@ -48,7 +47,8 @@ export default function RootLayout() {
 
 function RootLayoutNav() {
   const colorScheme = useColorScheme();
-  const { back } = useRouter()
+  const { back } = useRouter();
+
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>

@@ -2,14 +2,26 @@ import { Article, Text, View, Image, Span } from "app/design/TailwindComponents"
 import { useAppStore } from "app/store/store"
 import SpillPostHeader from "./SpillPostHeader"
 import HighlightedHashtags from "app/utils/HighlightHash"
-import { Link } from "solito/link"
+import { MotiLink } from "solito/moti"
+import { useRouter } from "solito/navigation"
 
+import { Link } from 'solito/link'
 
 const SpillPostBody = (props) => {
   const isExpanded = useAppStore((state) => state.isExpanded)
+  const { push } = useRouter()
+
+
+  const onPress = (item) => {
+
+
+    let id = 'Bishop'
+
+    push(`/user/${id}`)
+  }
 
   return (
-    <Link href={'#'} className={`flex-1 w-full max-w-5xl`}>
+    <Link href="/user/bishop">
       {!isExpanded &&
         <View className="px-4 mt-1">
           <SpillPostHeader avatar={props.avatar} username={props.username} />

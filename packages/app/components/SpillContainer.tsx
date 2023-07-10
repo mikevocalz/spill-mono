@@ -19,9 +19,11 @@ export const SpillContainer: FC = () => {
     <View
       style={{
         zIndex: 1000,
-
+        paddingLeft: 90,
+        marginLeft: 130,
+        position: 'fixed'
       }}
-      className={`fixed z-10 pb-[46px] lg:visible rounded-3xl items-center w-full max-w-[865px] bg-[#0f24cf] ${isMobile ? 'p-2 ' : 'p-4 '}  `}>
+      className={`mx-[50px] flex-1 w-[96%]  z-10 pb-[46px] mt-3 rounded-3xl items-center max-w-[865px] bg-[#0f24cf] ${isMobile ? 'p-2 ' : 'p-4'}  `}>
       <View className="w-full flex-row justify-center space-x-2 max-w-4xl">
         <Image
           className="bg-white md:h-12 md:w-12 h-9 w-9 rounded-full border-[#0b7b0e] border-[1px]"
@@ -44,7 +46,7 @@ export const SpillContainer: FC = () => {
             value={spillText}
             placeholder="What's Ya #SPILL?"
           />
-          <View className="bg-black text-white  absolute  bottom-3 right-3 h-6 items-center justify-center py-2 px-3 rounded-xl">
+          <View className="bg-black text-white absolute  bottom-3 right-3 h-6 items-center justify-center py-2 px-3 rounded-xl">
             <Text style={{ color: 'white' }} className='text-white font-normal text-md '>{textNum}/90</Text>
           </View>
         </View>

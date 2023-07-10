@@ -82,7 +82,7 @@ export function HomeScreen() {
 
       }}
 
-      className={`flex-1 w-full  bg-black h-screen min-w-screen min-h-screen  ${isWeb ? 'items-center pb-[400px]' : 'pb-[500px] '
+      className={`flex-1 w-full bg-black h-screen min-w-screen min-h-screen  ${isWeb ? 'items-center pb-[400px]' : 'pb-[500px] '
         } `} >
 
 
@@ -223,6 +223,7 @@ export function HomeScreen() {
           icon={() => isExpanded ? IconCol : IconEX}
           onPress={() => expand()}
           mode='elevated'
+          rippleColor={'orange'}
           style={{
             borderRadius: 12,
             height: 50,
@@ -230,8 +231,8 @@ export function HomeScreen() {
             zIndex: 1000,
             justifyContent: 'center',
             backgroundColor: '#ec562a',
-            right: '6%',
-            bottom: 30,
+            right: '5%',
+            bottom: 60,
             position: 'fixed',
             display: 'flex'
           }}

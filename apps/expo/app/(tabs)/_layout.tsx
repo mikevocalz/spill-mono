@@ -1,7 +1,6 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-
-import { Link, Tabs } from 'expo-router';
+import { Tabs, Link } from 'expo-router';
 import { useColorScheme } from 'react-native';
 import LogoTitle from 'app/components/LogoTitle'
 import { Pressable } from 'app/design/TailwindComponents';

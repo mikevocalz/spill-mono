@@ -5,6 +5,7 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Dimensions, ListRenderItemInfo, Platform, } from 'react-native';
 import SpillPostListItem from 'app/components/SpillPostListItem';
 import { useAppStore } from "app/store/store"
+import { useRouter, } from 'solito/router'
 
 
 const { width, height } = Dimensions.get('screen');
@@ -48,12 +49,30 @@ const data = [
   }
 
 ]
+
+
 export const HomeContainer: FC = () => {
   const expand = useAppStore((state) => state.toggleExpansion)
 
+  const { push } = useRouter()
+
+
+  const onPress = (item) => {
+
+    let id = 'beishop'
+
+    push({
+      pathname: `/user/${id}`,
+      query: {
+
+      }
+    })
+  }
   const renderItem = ({ item, idx }: any) => (
     <SpillPostListItem
+
       key={idx}
+      onPress={onPress}
       imgSrc={item?.img}
       text={item?.text}
       hash={item?.hash}
