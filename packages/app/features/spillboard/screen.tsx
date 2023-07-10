@@ -158,7 +158,7 @@ export function SpillBoardScreen() {
         bounces={false}
         scrollEventThrottle={20}
         columnWrapperStyle={{ alignItems: 'flex-start' }}
-        renderItem={({ item }) => <SquareItem item={item} />}
+        renderItem={({ item, index }) => <SquareItem index={index} item={item} />}
         keyExtractor={(item: any) => item.id.toString()}
         ListHeaderComponentStyle={{
           paddingVertical: Platform.OS === 'web' ? 30 : 15,
