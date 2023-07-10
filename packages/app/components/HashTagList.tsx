@@ -50,6 +50,9 @@ const HashTagList = () => {
       {loopedData.map((movie, index) => (
         <AnimatePresence key={index} exitBeforeEnter>
           <MotiPressable
+            from={{ opacity: 0, translateY: 100 }}
+            animate={{ opacity: 1, translateY: 0 }}
+            transition={{ delay: 1000 }}
             className="flex rounded-full mx-1 my-2 px-4 py-2 bg-[#ec562a] justify-center" >
             <Text style={{
               fontSize: fontPixel(14)

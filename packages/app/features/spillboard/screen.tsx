@@ -9,6 +9,7 @@ import { useWindowDimensions } from 'react-native'
 import { fontPixel, heightPixel, widthPixel } from 'app/utils/normalize'
 import HighlightedHashtags from 'app/utils/HighlightHash'
 import { motify } from 'moti'
+import { Link } from 'solito/link';
 
 const MotiArticle = motify(Article)();
 
@@ -81,70 +82,55 @@ export function SpillBoardScreen() {
   const SquareItem = ({ item, index }) => {
 
     return (
-      // <MotiPressable
-      //   href={'#'}
-      //   className='m-1  h-auto aspect-square bg-red-500 items-center justify-center rounded-2xl'
-      //   style={{
-      //     flexGrow: .5,
-      //     width: widthPixel(width / 2),
-      //     height: heightPixel(width / 2),
-      //   }}
-      // >
-      //   <Text className='text-white font-bold text-center Text-8'>{item.text}</Text>
-      // </MotiPressable>
+      <Link href={'/user/@bishops' + ' ' + 'spill'}>
+        <MotiArticle
+          from={{ opacity: 0, translateY: 100 }}
+          animate={{ opacity: 1, translateY: 0 }}
+          transition={{ delay: 800 }}
+          className="overflow-hidden rounded-xl shadow-lg mx-2 bg-zinc-900">
+          <View className="p-2 aspect-[4/4] container w-[46vw] height-[46vh] relative max-w-md"  >
+
+            <Image alt="Placeholder"
+              unoptimized
+              loading='lazy'
+              className=""
+              fill
+              contentPosition={'top center'}
+              contentFit='cover'
+              placeholder="blur"
+              blurDataURL="|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj["
+              // sizes="(min-width: 100vw) 100vh"
+              sizes={width !== undefined ? `${Math.round(width)}px` : '100vw'}
+
+              src={item.img} />
+
+            <View className="flex-row items-center  justify-between  ">
+              <View className='h-6' />
+              <View className='bg-[#efcf37] justify-center rounded-full p-[3%] aspect-square '>
+                <Text
+                  style={{
+                    fontSize: isWeb ? fontPixel(14) : fontPixel(10)
+                  }}
+                  className="text-black font-bold ">
+                  #{item.id}
+                </Text>
+              </View>
+            </View>
 
 
 
-      <MotiArticle
-        from={{ opacity: 0, translateY: 100 }}
-        animate={{ opacity: 1, translateY: 0 }}
-        transition={{ delay: 800 }}
-        className="overflow-hidden rounded-xl shadow-lg mx-2 bg-zinc-900">
-        <View className="p-2 aspect-[4/4] container w-[46vw] height-[46vh] relative max-w-md"  >
-
-          <Image alt="Placeholder"
-            unoptimized
-            loading='lazy'
-            className=""
-            fill
-            contentPosition={'top center'}
-            contentFit='cover'
-            placeholder="blur"
-            blurDataURL="|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj["
-            // sizes="(min-width: 100vw) 100vh"
-            sizes={width !== undefined ? `${Math.round(width)}px` : '100vw'}
-
-            src={item.img} />
-
-          <View className="flex-row items-center  justify-between  ">
-            <View className='h-6' />
-            <View className='bg-[#efcf37] justify-center rounded-full p-[3%] aspect-square '>
-              <Text
-                style={{
-                  fontSize: isWeb ? fontPixel(14) : fontPixel(10)
-                }}
-                className="text-black font-bold ">
-                #{item.id}
-              </Text>
+            <View className="absolute left-0 bottom-3  left-0 px-[3%] mr-4">
+              <HighlightedHashtags text={item.text} />
             </View>
           </View>
-
-
-
-          <View className="absolute left-0 bottom-3  left-0 px-[3%] mr-4">
-            <HighlightedHashtags text={item.text} />
-          </View>
-        </View>
-      </MotiArticle>
+        </MotiArticle>
+      </Link>
     );
   };
 
   return (
     <View
-
-
       className="flex-1 items-center  mx-auto container  w-full h-screen min-w-screen min-h-screen max-w-7xl ">
-
 
       <FlatList
         data={data}
@@ -178,7 +164,6 @@ export function SpillBoardScreen() {
           justifyContent: 'center'
         }}
       />
-
 
     </View>
   )
