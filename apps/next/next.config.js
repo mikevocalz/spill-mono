@@ -49,6 +49,7 @@ const nextConfig = {
     'expo-av',
     'expo-asset',
     'expo-font',
+    '@expo/next-adapter',
   ],
 
   webpack: (config, options) => {

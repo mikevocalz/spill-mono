@@ -35,7 +35,7 @@ const SpillPostHeader = (props) => {
               style={{
                 fontSize: fontPixel(14)
               }}
-              className={`text-white font-bold flex-wrap flex-1'}`}>
+              className={`text-white font-bold flex-wrap flex-1`}>
               {props?.username}
             </Text>
             {isSponored &&
@@ -43,7 +43,7 @@ const SpillPostHeader = (props) => {
                 style={{
                   fontSize: fontPixel(10)
                 }}
-                className={`text-white font-bold flex-wrap flex-1'}`}>
+                className={`text-white font-bold flex-wrap flex-1`}>
                 sponsored
               </Text>
             }
