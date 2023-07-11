@@ -1,4 +1,4 @@
-import { Article, Text, View, Image } from "app/design/TailwindComponents"
+import { Article, Text, View, Image, Span } from "app/design/TailwindComponents"
 import { useAppStore } from "app/store/store"
 import CommentBoxSVG from "./CommentBoxSVG"
 import QuoteSVG from "./QuoteSVG"
@@ -14,25 +14,40 @@ const SpillPostHeader = (props) => {
     return Math.floor(Math.random() * 10) + 1;
   }
 
+  let isSponored
+
   return (
-    <View className={`flex w-full max-w-5xl my-2`}>
-      <View className="flex-row justify-between">
+    <View className={`flex-1  w-full max-w-5xl px-3`}>
+      <View className="flex-row justify-between justify-center items-center">
         <View className="flex flex-row items-center space-x-2">
           <Image
-            className="bg-white md:h-12 md:w-12 h-8 w-8 rounded-full border-[#0b7b0e] border-[1px]"
+            className="bg-white flex-wrap md:h-12 md:w-12 h-8 w-8 rounded-full border-[#0b7b0e] border-[1px]"
             unoptimized
+            priority
             contentFit='cover'
             alt="app image"
             width={200}
             height={200}
             src={props?.avatar}
           />
-          <Text style={{
-            fontSize: fontPixel(14)
-          }}
-            className={`text-white font-bold '}`}>
-            {props?.username}
-          </Text>
+          <View className="flex-col">
+            <Text
+              style={{
+                fontSize: fontPixel(14)
+              }}
+              className={`text-white font-bold flex-wrap flex-1'}`}>
+              {props?.username}
+            </Text>
+            {isSponored &&
+              <Text
+                style={{
+                  fontSize: fontPixel(10)
+                }}
+                className={`text-white font-bold flex-wrap flex-1'}`}>
+                sponsored
+              </Text>
+            }
+          </View>
         </View>
 
         <View className=" flex-row items-center space-x-3 absolute right-2">

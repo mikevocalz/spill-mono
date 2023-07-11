@@ -5,6 +5,7 @@ import { Button, IconButton } from "react-native-paper"
 import { usePathname } from 'solito/navigation';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Dimensions, useWindowDimensions } from "react-native";
+import { useRouter } from "next/router";
 
 
 const tabs: Array<{
@@ -75,11 +76,22 @@ const HeaderComponent: FC = () => {
   const { width } = useWindowDimensions()
   const pathname = usePathname();
   const isMobile = window.innerWidth <= 720
+
+
+  const { query } = useRouter()
+  const urlStr = query?.id
+  const getID = urlStr ?? [];
+
+  const idRegex = /^\/user\/(.+)/;
+  const match = pathname?.match(idRegex);
+
   const homePath = pathname === ('/home')
-  const authPath = pathname?.startsWith('/home') || pathname?.startsWith('/spillboard') || pathname?.startsWith('/search') || pathname?.startsWith('/teapot')
+  const authPath = pathname?.startsWith('/home') || pathname?.startsWith('/spillboard') || pathname?.startsWith('/search') || pathname?.startsWith('/teapot') || match
 
-  const nonAuthPath = pathname === '/' || pathname?.startsWith('/news') || pathname?.startsWith('/team') || pathname?.startsWith('/careers')
+  const nonAuthPath = pathname === '/' || pathname?.startsWith('/news') || pathname?.startsWith('/team') || pathname?.startsWith('/careers') || pathname?.startsWith('/404')
 
+
+  console.log('im ID:', getID)
   return (
     <Header className={`fixed w-full z-30 top-0 text-white h-[70px] ${authPath ? 'bg-[#0b7b0e]' : 'bg-transparent'}`}>
 

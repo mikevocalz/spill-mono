@@ -82,7 +82,7 @@ export function SpillBoardScreen() {
   const SquareItem = ({ item, index }) => {
 
     return (
-      <Link href={'/user/@bishops' + ' ' + 'spill'}>
+      <Link key={index} href={'/user/@bishops' + ' ' + 'spill'}>
         <MotiArticle
           from={{ opacity: 0, translateY: 100 }}
           animate={{ opacity: 1, translateY: 0 }}

@@ -6,48 +6,71 @@ import { Dimensions, ListRenderItemInfo, Platform, } from 'react-native';
 import SpillPostListItem from 'app/components/SpillPostListItem';
 import { useAppStore } from "app/store/store"
 import { useRouter, } from 'solito/router'
+import { heightPixel } from 'app/utils/normalize';
 
 
 const { width, height } = Dimensions.get('screen');
 
-const data = [
+interface Data {
+  id: number,
+  text: string,
+  img: string,
+  hash: string,
+  avatar: string,
+  username: string
+}
+
+
+const data: Data[] = [
   {
-    text: 'Whats Goin on Fam? Whats ya #MarvelSpill ?',
-    img: 'https://i.ytimg.com/vi/CqcNbhY9ltA/maxresdefault.jpg',
-    hash: '#MarvelSpill ?',
-    avatar: 'https://i.pinimg.com/originals/6f/64/43/6f6443436071a11d533bbacf4d00361a.jpg',
-    username: 'ZaddyBishop'
+    id: 1,
+    text: 'Me 1st downloading #Spill and seeing my people ✊🏿',
+    img: 'https://media1.giphy.com/media/l3mZslQwX1rJjOZZ6/giphy.gif',
+    hash: '#MarvelSpill',
+    avatar: 'https://www.comicbasics.com/wp-content/uploads/2023/02/Shuri-Black-Panther-Wakanda-Forever-1.jpg',
+    username: 'MrPierce'
   },
+
   {
-    text: 'Ladies i think The queen needs a 🎥 #DCSpill',
+    id: 2,
+    text: 'Ladies i think the queen needs a 🎥 #DCSpill',
     img: 'https://hips.hearstapps.com/hmg-prod/images/nubia-1601912242.jpg',
     hash: '#DCSpill',
     avatar: 'https://cdn.mos.cms.futurecdn.net/w4JpnGpTMdM3p7GcNcxUZD.jpg',
     username: 'MsSormzyWeatha'
-
   },
   {
+    id: 3,
     text: 'When lightnin srikes ⚡ #DCSpill ⚡. Yall misss Black Lightnin?',
-    img: 'https://akns-images.eonline.com/eol_images/Entire_Site/20201020/rs_1200x1200-201120115519-1200-Cress-Williams-Black-Lightning-LT-112020-CW.jpg',
+    img: 'https://media.tenor.com/6Vsb0hXEmRIAAAAd/electric-blast-cress-williams.gif',
     hash: '#DCSpill',
     avatar: 'https://tvline.com/wp-content/uploads/2021/01/black-lightning-final-season-trailer.png',
-    userName: 'MrPierce'
+    username: 'MrPierce'
   },
   {
+    id: 4,
     text: 'This Zack dont Crack!! #PowerRangersSpill',
     img: 'https://i.ytimg.com/vi/D6SMZnD8hYs/maxresdefault.jpg',
     hash: '#PRSpill',
     avatar: 'https://static.wikia.nocookie.net/powerrangers/images/5/52/ZackS2.png',
-    userName: 'KingZack'
+    username: 'KingZack'
   },
   {
+    id: 5,
     text: 'Its time to Boogie with the Bear #PowerRangersSpill',
     img: 'https://i.ytimg.com/vi/APIFOoaNXpw/maxresdefault.jpg',
     hash: '#PowerRangerSpill',
     avatar: 'https://assets2.ignimgs.com/2016/10/31/supergirl-tv-miss-martian-revealjpg-f48300_160w.jpg',
     username: 'HeatherMsHuntress'
-  }
-
+  },
+  {
+    id: 6,
+    text: 'Me leaving #Twitter but....whats Goin on Fam? Whats ya #MarvelSpill ?',
+    img: 'https://64.media.tumblr.com/0c1302bd46a7525d2edd239808472c8b/tumblr_n66ze6xLbW1rjwy92o3_500.gifv',
+    hash: '#MarvelSpill ?',
+    avatar: 'https://i.pinimg.com/originals/6f/64/43/6f6443436071a11d533bbacf4d00361a.jpg',
+    username: 'ZaddyBishop'
+  },
 ]
 
 
@@ -68,24 +91,27 @@ export const HomeContainer: FC = () => {
       }
     })
   }
-  const renderItem = ({ item, idx }: any) => (
-    <SpillPostListItem
 
-      key={idx}
-      onPress={onPress}
-      imgSrc={item?.img}
-      text={item?.text}
-      hash={item?.hash}
-      avatar={item?.avatar}
-      username={item?.username}
-    />
-  );
+
+  const renderItem = ({ item, idx }) => {
+    return (
+      <SpillPostListItem
+        key={idx}
+        onPress={onPress}
+        imgSrc={item?.img}
+        text={item?.text}
+        hash={item?.hash}
+        avatar={item?.avatar}
+        username={item?.username}
+      />
+    )
+  };
 
   return (
     <View
 
       className='items-center min-h-screen w-screen max-w-4xl  '>
-      {Platform.OS === 'web' && <View style={{ zIndex: -1000 }} className=" w-full fixed  bg-black h-[100px]" />}
+      {Platform.OS === 'web' && <View style={{ zIndex: -1000 }} className=" w-full fixed  mx-[60px] bg-black h-[100px]" />}
 
       <FlatList
         showsVerticalScrollIndicator={false}
@@ -93,20 +119,20 @@ export const HomeContainer: FC = () => {
           zIndex: -1000,
 
         }}
-        className=' w-screen max-w-4xl px-4 '
+        className=' min-w-screen max-w-4xl px-2 min-h-screen'
         contentContainerStyle={{
           paddingTop: Platform.OS === 'web' ? 200 : 0,
           zIndex: 1000,
           paddingBottom: Platform.OS === 'web' ? 400 : 300
         }}
         ListHeaderComponent={() => <View className='h-14' />}
-        ItemSeparatorComponent={() => <View className='h-10 md:h-[400px]' />}
+        ItemSeparatorComponent={() => <View style={{ height: heightPixel(60) }} />}
 
         data={data}
         bounces={false}
         scrollEventThrottle={20}
         renderItem={(item: any) => renderItem(item)}
-        keyExtractor={(item: any) => item?.username}
+        keyExtractor={(index: any) => index.toString()}
       />
 
     </View >
