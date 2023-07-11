@@ -19,6 +19,7 @@ const SpillPostListItem = (props) => {
   return (
     <>
       <View
+        href="/spillboard"
         from={{
           opacity: 0,
           scale: 0.8,
@@ -41,12 +42,13 @@ const SpillPostListItem = (props) => {
         key={props.id}
         className={`overflow-hidden ${isExpanded ? '' : 'py-4  '} ${isWeb ? '' : ''} rounded-3xl shadow-lg justify-center  bg-zinc-900 max-w-4xl mx-2 mb-6`}>
 
-        {!isExpanded && <SpillPostHeader key={props.index} avatar={props.avatar} username={props.username} />}
+        {!isExpanded && <SpillPostHeader key={props.index} avatar={props.avatar} username={props.username} isSponsored={props.isSponsored} />}
 
         {isExpanded ?
           <MotiPressable
+            href={'/spillboard'}
             key={props.id}
-            className={`p-2  ${isWeb ? 'aspect-[4/2.3]' : 'aspect-[4/4]'} container overflow-hidden  w-[94vw] height-[100vh] relative max-w-5xl`}>
+            className={`p-2  ${isWeb ? 'aspect-[4/2.3]' : 'aspect-[4/3.8]'} container overflow-hidden  w-[94vw] height-[100vh] relative max-w-5xl`}>
 
             <Image alt="Placeholder"
               unoptimized
@@ -65,7 +67,7 @@ const SpillPostListItem = (props) => {
 
 
 
-            <View className="flex w-full  absolute left-0 bottom-3  left-0 px-[3%] mr-4">
+            <View className="flex w-[85vw]  absolute left-0 bottom-3  left-0 px-[3%] mr-4">
               <HighlightedHashtags index={props.id} text={props.text} />
             </View>
           </MotiPressable> :
@@ -96,7 +98,7 @@ const SpillPostListItem = (props) => {
         }
       </View>
       {isExpanded &&
-        <SpillPostHeader avatar={props.avatar} username={props.username} />}
+        <SpillPostHeader avatar={props.avatar} username={props.username} isSponsored={props.isSponsored} />}
 
     </>
   )

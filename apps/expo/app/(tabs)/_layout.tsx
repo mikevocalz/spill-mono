@@ -43,12 +43,17 @@ export default function TabLayout() {
         tabBarActiveTintColor: '#efcf37',
         tabBarInactiveTintColor: '#fff',
         tabBarShowLabel: true,
+
         tabBarLabelStyle: {
           fontFamily: 'SFProDisplay-Bold',
           marginBottom: 14,
           fontSize: 10,
           textTransform: 'uppercase',
           letterSpacing: 2,
+          textAlign: 'center',
+          textAlignVertical: 'center',
+          alignItems: 'center',
+
         },
         headerTitleAlign: 'center',
         headerStyle: {

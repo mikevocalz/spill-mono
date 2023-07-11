@@ -17,11 +17,21 @@ interface Data {
   img: string,
   hash: string,
   avatar: string,
-  username: string
+  username: string,
+  isSponsored?: boolean
 }
 
 
 const data: Data[] = [
+  {
+    id: 0,
+    text: 'You gettin ya Spill on? Heres how to #Spill my peeps ✊🏿',
+    img: 'https://media3.giphy.com/media/ibY66A3oGk0COGcP8L/giphy.gif?cid=ecf05e47dcscuel0grzcqvgmhdo6nelagmfy02tgna8ejuw2&ep=v1_gifs_search&rid=giphy.gif&ct=g',
+    hash: '#SpillApp',
+    avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu90sGMHvISGaEH3_eLAffHTK0pclmyQxEmHHWvcAhlfx7R-n5Yk-jdrKgAhOPLY6CnAI&usqp=CAU',
+    username: 'Spill',
+    isSponsored: true
+  },
   {
     id: 1,
     text: 'Me 1st downloading #Spill and seeing my people ✊🏿',
@@ -30,7 +40,6 @@ const data: Data[] = [
     avatar: 'https://www.comicbasics.com/wp-content/uploads/2023/02/Shuri-Black-Panther-Wakanda-Forever-1.jpg',
     username: 'MrPierce'
   },
-
   {
     id: 2,
     text: 'Ladies i think the queen needs a 🎥 #DCSpill',
@@ -76,6 +85,7 @@ const data: Data[] = [
 
 export const HomeContainer: FC = () => {
   const expand = useAppStore((state) => state.toggleExpansion)
+  const isExpanded = useAppStore((state) => state.isExpanded)
 
   const { push } = useRouter()
 
@@ -98,6 +108,7 @@ export const HomeContainer: FC = () => {
       <SpillPostListItem
         key={idx}
         onPress={onPress}
+        isSponsored={item?.isSponsored}
         imgSrc={item?.img}
         text={item?.text}
         hash={item?.hash}
@@ -126,7 +137,7 @@ export const HomeContainer: FC = () => {
           paddingBottom: Platform.OS === 'web' ? 400 : 300
         }}
         ListHeaderComponent={() => <View className='h-14' />}
-        ItemSeparatorComponent={() => <View style={{ height: heightPixel(60) }} />}
+        ItemSeparatorComponent={() => <View style={{ height: isExpanded ? heightPixel(60) : heightPixel(25) }} />}
 
         data={data}
         bounces={false}

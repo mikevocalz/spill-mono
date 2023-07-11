@@ -119,8 +119,8 @@ export function SpillBoardScreen() {
 
 
 
-            <View className="absolute left-0 bottom-3  left-0 px-[3%] mr-4">
-              <HighlightedHashtags text={item.text} />
+            <View className="flex w-full absolute left-0 bottom-3 px-[3%] mr-4 ">
+              <HighlightedHashtags index={index} key={item.id} text={item.text} />
             </View>
           </View>
         </MotiArticle>
