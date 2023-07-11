@@ -72,7 +72,27 @@ const SpillPostListItem = (props) => {
             </View>
           </MotiPressable> :
 
-          <MotiPressable className={`mb-0 flex-row justify-between `}>
+          <MotiPressable
+            from={{
+              opacity: 0,
+              scale: 0.8,
+            }}
+            animate={{
+              opacity: 1,
+              scale: 1,
+            }}
+            transition={{
+              type: 'timing',
+              duration: 600
+            }}
+            exitTransition={{
+              type: 'decay'
+            }}
+            exit={{
+              opacity: 0,
+              scale: 0.5,
+            }}
+            className={`mb-0 flex-row justify-between `}>
             <View className={`flex h-full max-h-[600px] mt-3 flex-row items-center  w-full p-4  max-w-5xl min-h-full `}>
               <View className="p-2 aspect-[2/4] rounded-xl container overflow-hidden  w-[30vw] height-[50vh] relative max-w-[15vw]"  >
 

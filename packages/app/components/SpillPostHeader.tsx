@@ -17,7 +17,27 @@ const SpillPostHeader = (props) => {
   let isSponored
 
   return (
-    <View className={`flex-1  mt-3 w-full max-w-5xl px-3`}>
+    <View
+      from={{
+        opacity: 0,
+        scale: 0.8,
+      }}
+      animate={{
+        opacity: 1,
+        scale: 1,
+      }}
+      transition={{
+        type: 'timing',
+        duration: 600
+      }}
+      exitTransition={{
+        type: 'decay'
+      }}
+      exit={{
+        opacity: 0,
+        scale: 0.5,
+      }}
+      className={`flex-1  mt-3 w-full max-w-5xl px-3`}>
       <View className="flex-row justify-between justify-center items-center">
         <Link href='/user/'>
           <View className="flex flex-row items-center space-x-2">

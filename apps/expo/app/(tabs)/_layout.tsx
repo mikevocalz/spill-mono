@@ -10,6 +10,7 @@ import { FAB } from 'react-native-paper'
 import { useAppStore } from 'app/store/store';
 import ExpandedIcon from 'app/components/ExpandedIcon';
 import CollapsedIcon from 'app/components/CollapsedIcon';
+import { Dimensions } from 'react-native';
 
 /**
  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
@@ -46,7 +47,7 @@ export default function TabLayout() {
 
         tabBarLabelStyle: {
           fontFamily: 'SFProDisplay-Bold',
-          marginBottom: 14,
+          marginBottom: Dimensions.get('screen').width < 400 ? 14 : 0,
           fontSize: 10,
           textTransform: 'uppercase',
           letterSpacing: 2,
@@ -69,7 +70,7 @@ export default function TabLayout() {
           bottom: 0,
           left: 0,
           right: 0,
-          height: 75,
+          //height: 75,
           borderRadius: 20,
           paddingBottom: 5,
           borderTopWidth: 0,
