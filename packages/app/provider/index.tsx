@@ -7,12 +7,13 @@ const { width, height } = Dimensions.get('screen');
 
 export function Provider({ children }: { children: React.ReactNode }) {
   return (
-    <GestureHandlerRootView>
-      <BottomSheetModalProvider>
-        <PaperProvider>
+    <BottomSheetModalProvider>
+      <PaperProvider>
+        <GestureHandlerRootView style={{ flex: 1, width: '100%' }}>
           {children}
-        </PaperProvider>
-      </BottomSheetModalProvider>
-    </GestureHandlerRootView>
+        </GestureHandlerRootView>
+      </PaperProvider>
+    </BottomSheetModalProvider>
+
   )
 }

@@ -57,7 +57,7 @@ const HashTagList = () => {
             <Text style={{
               fontSize: fontPixel(14)
             }}
-              className="text-white font-[SFProDisplay-Bold] text-center font-bold">#{movie.title}</Text>
+              className="text-white font-[SFProDisplay] text-center font-bold">#{movie.title}</Text>
           </MotiPressable>
         </AnimatePresence>
       ))}

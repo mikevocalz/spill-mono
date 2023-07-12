@@ -144,7 +144,7 @@ const HeaderComponent: FC = () => {
                     }}
                   >
                     <Text selectable={false}
-                      className={`mr-5 text-[16px] font-black font-[SFProDisplay-Bold] tracking-widest leading-90
+                      className={`mr-5 text-[16px] font-black font-[SFProDisplay] tracking-widest leading-90
     ${active ? 'text-[#efcf37]' : 'text-[#fff]'}
     
     `}        >
@@ -189,7 +189,7 @@ const HeaderComponent: FC = () => {
                     }}
                   >
                     <Text selectable={false}
-                      className={`mr-5 text-[16px] font-black font-[SFProDisplay-Bold] tracking-widest leading-90
+                      className={`mr-5 text-[16px] font-black font-[SFProDisplay] tracking-widest leading-90
     ${active ? 'text-[#efcf37]' : 'text-[#fff]'}
     
     `}        >

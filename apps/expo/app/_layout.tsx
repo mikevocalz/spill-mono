@@ -2,13 +2,15 @@
 import '../ignoreWarnings'
 
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
+import { DarkTheme, DefaultTheme, ThemeProvider, useRoute } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
-import { SplashScreen, Stack } from 'expo-router';
+import { SplashScreen, Stack, useSearchParams } from 'expo-router';
 import { useEffect } from 'react';
-import { useColorScheme } from 'react-native';
+import { View, useColorScheme } from 'react-native';
 import { useRouter } from 'solito/navigation'
-import { Pressable } from 'app/design/TailwindComponents';
+import { Pressable, ScrollView, Text } from 'app/design/TailwindComponents';
+import { Provider } from 'app/provider'
+import { StatusBar } from 'expo-status-bar';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -26,7 +28,7 @@ SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
   const [loaded, error] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-    "SFProDisplay-Bold": require('../assets/fonts/SFProDisplay-Bold.ttf'),
+    SFProDisplay: require('../assets/fonts/SFProDisplay.ttf'),
     ...FontAwesome.font,
   });
 
@@ -45,12 +47,22 @@ export default function RootLayout() {
     return null;
   }
 
-  return <RootLayoutNav />;
+  return (
+    <Provider>
+      <StatusBar animated style='light' />
+      <RootLayoutNav />
+    </Provider>
+  )
+
 }
 
 function RootLayoutNav() {
   const colorScheme = useColorScheme();
   const { back } = useRouter();
+
+
+  const router = useSearchParams()
+
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
@@ -63,7 +75,7 @@ function RootLayoutNav() {
             backgroundColor: "#efcf37",
           },
           headerTitleStyle: {
-            fontFamily: 'SFProDisplay-Bold',
+            fontFamily: 'SFProDisplay',
             fontWeight: 'bold',
             fontSize: 26,
           },
@@ -89,7 +101,7 @@ function RootLayoutNav() {
               backgroundColor: "#ec562a",
             },
             headerTitleStyle: {
-              fontFamily: 'SFProDisplay-Bold',
+              fontFamily: 'SFProDisplay',
               fontWeight: 'bold',
               fontSize: 26,
             },
@@ -110,30 +122,36 @@ function RootLayoutNav() {
         <Stack.Screen
           name="user/[id]"
 
-          options={({ route }) => ({
+          options={({ route }: { route: any }) => ({
             title: route.params.id,
+
             presentation: 'fullScreenModal',
             headerStyle: {
               backgroundColor: "#000",
             },
             headerTitleStyle: {
-              fontFamily: 'SFProDisplay-Bold',
+              fontFamily: 'SFProDisplay',
               fontWeight: 'bold',
               fontSize: 18,
 
             },
-            headerLeft: () => (
-              <Pressable onPress={back}>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name='chevron-left'
-                    size={26}
-                    color={'white'}
-                    style={{ marginLeft: 10, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            ),
+            headerLeft: () => {
+              return (
+                <Pressable onPress={back}>
+                  {({ pressed }) => (
+                    <FontAwesome
+                      name='chevron-left'
+                      size={26}
+                      color={'white'}
+                      style={{ marginLeft: 10, opacity: pressed ? 0.5 : 1 }}
+                    />
+                  )}
+                </Pressable>
+
+              )
+            },
+
+
           })}
 
         />

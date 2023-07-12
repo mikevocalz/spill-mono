@@ -8,7 +8,7 @@ import { AppRegistry } from 'react-native'
 
 
 const fonts = [
-  "SFProDisplay-Bold", "EntypoFont", "AntDesignFont", "EvilIconsFont", "FeatherFont", "FontAwesomeFont",
+  "SFProDisplay", "EntypoFont", "AntDesignFont", "EvilIconsFont", "FeatherFont", "FontAwesomeFont",
   "FoundationFont", "IoniconsFont", "MaterialCommunityIconsFont", "MaterialIconsFont",
   "OcticonsFont", "SimpleLineIconsFont", "ZocialFont", "MaterialIcons", "Poppins", "BebasNeue-Bold"
 ]
@@ -60,7 +60,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -ms-overflow-style: scrollbar;
-  font-family:'SFProDisplay-Bold'
+  font-family:'SFProDisplay'
 }
 ${customFontCss}
 `

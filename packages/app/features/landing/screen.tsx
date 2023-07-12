@@ -56,7 +56,7 @@ export function LandingScreen() {
     <ScreenScrollView
       className="flex-1 bg-black items-center justify-center w-screen pt-40 pb-[100px]">
 
-      <Text className='font-[SFProDisplay-Bold] text-white mb-10 text-5xl md:text-6xl flex-col flex text-center'>SPILL is visual
+      <Text className='font-[SFProDisplay] text-white mb-10 text-5xl md:text-6xl flex-col flex text-center'>SPILL is visual
         <Text>conversation at the</Text>
         <Text>speed of culture</Text>
       </Text>
@@ -191,7 +191,7 @@ export function LandingScreen() {
           </View>
 
           <View className="flex p-10 gap-4 mt-3 sm:mt-6 items-center justify-center">
-            <Text className='font-[SFProDisplay-Bold]  leading-[50px] text-white mb-10 text-2xl md:text-[38px]  text-left'>
+            <Text className='font-[SFProDisplay]  leading-[50px] text-white mb-10 text-2xl md:text-[38px]  text-left'>
               See What's Tea in Your Community on Spill</Text>
           </View>
         </Section>
@@ -200,7 +200,7 @@ export function LandingScreen() {
         <Section
           className="mx-auto grid grid-cols-1 md:grid-cols-2 items-center justify-center md:gap-20">
           <View className="flex p-10 gap-4 mt-3 sm:mt-6 items-center justify-center">
-            <Text className='font-[SFProDisplay-Bold]  leading-[50px] text-white mb-10 text-2xl md:text-[38px]  text-left'>
+            <Text className='font-[SFProDisplay]  leading-[50px] text-white mb-10 text-2xl md:text-[38px]  text-left'>
               Express your thoughts by easily combining text with image, video, GIF and more</Text>
           </View>
 
@@ -220,7 +220,7 @@ export function LandingScreen() {
           </View>
 
           <View className="flex p-10 gap-4 mt-3 sm:mt-6 items-center justify-center">
-            <Text className='font-[SFProDisplay-Bold]  leading-[50px] text-white mb-10 text-2xl md:text-[38px]  text-left'>
+            <Text className='font-[SFProDisplay]  leading-[50px] text-white mb-10 text-2xl md:text-[38px]  text-left'>
               Discover the hottest Spills and most popular trends from all over the world</Text>
           </View>
         </Section>
@@ -231,8 +231,8 @@ export function LandingScreen() {
           <View className="max-w-7xl items-center justify-center p-10 ">
             <View style={{ zIndex: 1000 }}
               className='items-center w-full z-100 absolute top-20 left-0 right-0'>
-              <Text className='font-[SFProDisplay-Bold] text-3xl text-white mb-4 font-bold text-center z-100'>Join the Waitlist</Text>
-              <Text className='font-[SFProDisplay-Bold] text-[16px] font-extralight	 text-white mb-6 text-center z-100'>We'll hit you up when the time comes</Text>
+              <Text className='font-[SFProDisplay] text-3xl text-white mb-4 font-bold text-center z-100'>Join the Waitlist</Text>
+              <Text className='font-[SFProDisplay] text-[16px] font-extralight	 text-white mb-6 text-center z-100'>We'll hit you up when the time comes</Text>
               <TextInput
                 style={{
                   backgroundColor: '#000'

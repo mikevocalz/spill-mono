@@ -55,13 +55,12 @@ const HighlightedHashtags = ({ text, index }) => {
     <Text
       numberOfLines={5}
       allowFontScaling={true}
-      minimumFontScale={0.1}
+      minimumFontScale={0.5}
       textBreakStrategy='highQuality'
       style={{
-        flexGrow: 1,
         width: '100%',
         textAlignVertical: 'top',
-        lineHeight: isWeb ? 46 : '',
+        lineHeight: isWeb ? 46 : null,
         alignSelf: 'stretch',
         textAlign: 'left',
         flexWrap: 'wrap',
@@ -75,12 +74,12 @@ const HighlightedHashtags = ({ text, index }) => {
         shadowRadius: isWeb ? 0 : 1,
         paddingBottom: isWeb ? 10 : 4,
 
-        includeFontPadding: isWeb ? 10 : 0,
-        fontFamily: 'SFProDisplay-Bold',
+        //includeFontPadding: true,
+        fontFamily: isWeb ? '' : 'SFProDisplay',
         //fontSize: !isWeb && width <= 1280 ? fontPixel(32) : !isWeb && width <= 768 ? fontPixel(26) : !isWeb && width <= 450 ? fontPixel(20) : 50,
       }}
       key={iKey}
-      className={`flex   flex-wrap break-words font-[SFProDisplay-Bold] text-left text-white ${isWeb ? 'text-3xl xs:text-[36px] sm:text-[30px] md:text-[36px] lg:text-[40px] xl:text-[42px]' : 'ml-[8px] text-[20px] xs:text-4xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl'} `}>
+      className={`flex flex-wrap break-words font-[SFProDisplay] text-left text-white ${isWeb ? 'text-3xl xs:text-[36px] sm:text-[30px] md:text-[36px] lg:text-[40px] xl:text-[42px]' : 'ml-[8px] text-[20px] xs:text-4xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-4xl'} `}>
 
       {highlightedWords}
     </Text>

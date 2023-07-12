@@ -11,6 +11,7 @@ import { useAppStore } from 'app/store/store';
 import ExpandedIcon from 'app/components/ExpandedIcon';
 import CollapsedIcon from 'app/components/CollapsedIcon';
 import { Dimensions } from 'react-native';
+import { fontPixel } from 'app/utils/normalize';
 
 /**
  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
@@ -40,13 +41,19 @@ export default function TabLayout() {
 
   return (
     <Tabs
+      detachInactiveScreens
+      keyboardHandlingEnabled
+
       screenOptions={{
+        //unmountOnBlur: true,
+        gestureEnabled: true,
+        freezeOnBlur: true,
         tabBarActiveTintColor: '#efcf37',
         tabBarInactiveTintColor: '#fff',
         tabBarShowLabel: true,
 
         tabBarLabelStyle: {
-          fontFamily: 'SFProDisplay-Bold',
+          fontFamily: 'SFProDisplay',
           marginBottom: Dimensions.get('screen').width < 400 ? 14 : 0,
           fontSize: 10,
           textTransform: 'uppercase',
@@ -138,10 +145,10 @@ export default function TabLayout() {
                 height: 55,
                 alignItems: 'center',
                 justifyContent: 'center',
-                paddingLeft: 8
+                paddingLeft: 0
               }}
             >
-              {isExpanded ? <IconCol /> : <IconEX />}
+              <MatTabBarIcon size={fontPixel(28)} name={!isExpanded ? 'arrow-expand-vertical' : 'arrow-collapse-vertical'} color={'#000'} />
             </Pressable>,
         }}
       />

@@ -1,10 +1,9 @@
 {
   "expo": {
-    "name": "spill-solito-expo",
+    "name": "Spill Monorepo",
     "slug": "spill-solito-expo",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
     "scheme": "spill-solito-expo",
     "userInterfaceStyle": "automatic",
     "updates": {
@@ -12,8 +11,10 @@
     },
     "platforms": [
       "ios",
-      "android"
+      "android",
+      "web"
     ],
+    "icon": "./assets/images/icon.png",
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
@@ -33,9 +34,9 @@
         "backgroundColor": "#0f24cf"
       }
     },
-    "plugins": [
-      "expo-router"
-    ],
+    "web": {
+      "bundler": "metro"
+    },
     "experiments": {
       "tsconfigPaths": true,
       "typedRoutes": true
